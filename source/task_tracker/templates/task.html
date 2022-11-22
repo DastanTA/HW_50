@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    задача
+{% endblock %}
+
+{% block menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'add_task' %}">Добавить</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'update_task' task.id %}">Изменить</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'delete_task' task.id %}">Удалить</a></li>
+{% endblock %}
+
+{% block content %}
+<div class="card w-50 mt-5" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ task.summary }}</h5>
+    <p class="card-text">{{ task.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Тип: {{ task.type }}</li>
+    <li class="list-group-item">Статус: {{ task.status }}</li>
+    <li class="list-group-item">создано: {{ task.created_at }}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
+    <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
+  </div>
+</div>
+{% endblock %}

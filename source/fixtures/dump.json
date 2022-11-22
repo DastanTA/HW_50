@@ -1,0 +1,134 @@
+[
+{
+    "model": "task_tracker.status",
+    "pk": 1,
+    "fields": {
+        "status_name": "новый"
+    }
+},
+{
+    "model": "task_tracker.status",
+    "pk": 2,
+    "fields": {
+        "status_name": "в процессе"
+    }
+},
+{
+    "model": "task_tracker.status",
+    "pk": 3,
+    "fields": {
+        "status_name": "выполнен"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 1,
+    "fields": {
+        "type_name": "задача"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 2,
+    "fields": {
+        "type_name": "ошибка"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 3,
+    "fields": {
+        "type_name": "улучшение"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 9,
+    "fields": {
+        "summary": "Выполнить домашку",
+        "description": "Выполнить домашнее задание №49.",
+        "status": 3,
+        "type": 1,
+        "created_at": "2022-11-18T11:12:10.577Z",
+        "updated_at": "2022-11-18T11:12:10.577Z"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 10,
+    "fields": {
+        "summary": "Купить игрушку",
+        "description": "Куить модельку машинки сынишке",
+        "status": 1,
+        "type": 1,
+        "created_at": "2022-11-18T11:13:21.088Z",
+        "updated_at": "2022-11-18T11:13:21.088Z"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 11,
+    "fields": {
+        "summary": "поиск",
+        "description": "Надо исправить ошибки в функции поиска",
+        "status": 2,
+        "type": 2,
+        "created_at": "2022-11-18T11:13:49.723Z",
+        "updated_at": "2022-11-18T11:13:49.723Z"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 12,
+    "fields": {
+        "summary": "внешний вид",
+        "description": "Надо получше оформить внешний вид ДЗ",
+        "status": 1,
+        "type": 3,
+        "created_at": "2022-11-18T11:14:23.594Z",
+        "updated_at": "2022-11-18T11:14:23.594Z"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 13,
+    "fields": {
+        "summary": "leetcode",
+        "description": "Надо начать решатьь задачки на leetcode",
+        "status": 1,
+        "type": 3,
+        "created_at": "2022-11-18T11:15:32.072Z",
+        "updated_at": "2022-11-18T11:15:32.072Z"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 14,
+    "fields": {
+        "summary": "VS Code",
+        "description": "Надо проанализировать что лучше, VS Code или PyCharm",
+        "status": 1,
+        "type": 1,
+        "created_at": "2022-11-18T11:16:12.233Z",
+        "updated_at": "2022-11-18T11:16:12.233Z"
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$idMISIDJxJOslrQEoi6D8I$41c8t8DSxAUduoR4vDx8xeXL/9DOEbhx86DLubSW0RU=",
+        "last_login": "2022-11-18T05:31:50.262Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-11-18T05:29:10.664Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

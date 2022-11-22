@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+main page
+{% endblock %}
+
+{% block menu %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'add_task' %}">Добавить</a></li>
+{% endblock %}
+
+{% block content %}
+    <div><br><br><br><h2>Все задачи</h2><br></div>
+
+<div class="row row-cols-1">
+    {% for task in tasks %}
+      <div class="col mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ task.summary }}</h5>
+            <br><p class="card-text">Тип: {{ task.type }}</p>
+            <p class="card-text">Статус: {{ task.status }}</p><br>
+            <a href="{% url 'view_task' task.id %}" class="btn btn-info">Подробнее</a>
+            <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
+            <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{% endblock %}
