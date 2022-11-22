@@ -21,9 +21,7 @@ class Task(models.Model):
     status = models.ForeignKey(
         'task_tracker.Status', related_name='statuses',
         on_delete=models.RESTRICT, verbose_name='статус')
-    type = models.ForeignKey(
-        'task_tracker.Type', related_name='типы',
-        on_delete=models.RESTRICT, verbose_name='тип')
+    types = models.ManyToManyField('task_tracker.Type', related_name='types', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='время изменения')
 
