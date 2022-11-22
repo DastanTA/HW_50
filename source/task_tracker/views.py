@@ -33,7 +33,11 @@ class CreateTask(View):
         form = TaskForm(data=request.POST)
         if form.is_valid():
             types = form.cleaned_data.get('types')
-            new_task = Task.objects.create(**form.cleaned_data)
+            new_task = Task.objects.create(
+                summary=form.cleaned_data.get('summary'),
+                description=form.cleaned_data.get('description'),
+                status=form.cleaned_data.get('status'),
+            )
             new_task.types.set(types)
             return redirect('main')
         else:
