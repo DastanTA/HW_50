@@ -32,12 +32,9 @@ class CreateTask(View):
     def post(self, request, *args, **kwargs):
         form = TaskForm(data=request.POST)
         if form.is_valid():
-            Task.objects.create(
-                summary=form.cleaned_data.get('summary'),
-                description=form.cleaned_data.get('description'),
-                status=form.cleaned_data.get('status'),
-                type=form.cleaned_data.get('type')
-            )
+            types = form.cleaned_data.get('types')
+            new_task = Task.objects.create(**form.cleaned_data)
+            new_task.types.set(types)
             return redirect('main')
         else:
             return render(request, 'create.html', {'form': form})
@@ -50,7 +47,7 @@ class UpdateTask(View):
             'summary': task.summary,
             'description': task.description,
             'status': task.status,
-            'type': task.type
+            'type': task.types.all()
         })
         context = {'form': form, 'task': task}
         return render(request, 'update.html', context)
@@ -62,8 +59,9 @@ class UpdateTask(View):
             task.summary = form.cleaned_data.get('summary')
             task.description = form.cleaned_data.get('description')
             task.status = form.cleaned_data.get('status')
-            task.type = form.cleaned_data.get('type')
+            types = form.cleaned_data.get('type')
             task.save()
+            task.types.set(types)
             return redirect('view_task', kwargs['pk'])
         else:
             return render(request, 'update.html', {'form': form})
