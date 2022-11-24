@@ -20,7 +20,7 @@ class Type(models.Model):
 class Task(models.Model):
     summary = models.CharField(max_length=40, null=False, blank=False,
                                verbose_name='заголовок', validators=[banned_words, ])
-    description = models.TextField(max_length=500, null=True, blank=True, verbose_name='описание',
+    description = models.TextField(max_length=500, null=False, blank=False, verbose_name='описание',
                                    validators=[MinLengthValidator(20), ])
     status = models.ForeignKey(
         'task_tracker.Status', related_name='statuses',
