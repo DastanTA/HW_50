@@ -11,11 +11,3 @@ class TaskForm(forms.ModelForm):
         widgets = {'description': widgets.Textarea(attrs={"cols": 24, "rows": 3}),
                    'types': widgets.CheckboxSelectMultiple}
 
-    def clean_summary(self):
-        banned_words = ['sex', 'bomb', 'kill', 'porn', 'секс', 'бомба', 'убью', 'порно']
-        summary = self.cleaned_data.get('summary')
-        summary_lst = summary.split()
-        for word in summary_lst:
-            if word in banned_words:
-                raise ValidationError("Пожалуйста, не используйте запрещенные слова")
-        return summary

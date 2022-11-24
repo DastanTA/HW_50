@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
+from task_tracker.customvalidation import banned_words
 
 
 class Status(models.Model):
@@ -17,9 +18,10 @@ class Type(models.Model):
 
 
 class Task(models.Model):
-    summary = models.CharField(max_length=40, null=False, blank=False, verbose_name='заголовок')
+    summary = models.CharField(max_length=40, null=False, blank=False,
+                               verbose_name='заголовок', validators=[banned_words, ])
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name='описание',
-                                   validators=[MinLengthValidator(20),])
+                                   validators=[MinLengthValidator(20), ])
     status = models.ForeignKey(
         'task_tracker.Status', related_name='statuses',
         on_delete=models.RESTRICT, verbose_name='статус')
