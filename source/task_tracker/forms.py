@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import widgets
 from task_tracker.models import Type, Status
 
 
