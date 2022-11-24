@@ -11,3 +11,8 @@ class TaskForm(forms.ModelForm):
         widgets = {'description': widgets.Textarea(attrs={"cols": 24, "rows": 3}),
                    'types': widgets.CheckboxSelectMultiple}
 
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data['summary'] == cleaned_data['description']:
+            raise ValidationError('Заголовок и описание не должны быть идентичными!')
+        return cleaned_data
