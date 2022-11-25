@@ -7,6 +7,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_filter = ['status']
     search_fields = ['summary']
     exclude = []
+    filter_horizontal = ['types']
 
 
 admin.site.register(Task, TaskAdmin)
