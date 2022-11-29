@@ -1,11 +1,26 @@
 from django import forms
-from task_tracker.models import Type, Status
+from django.forms import widgets
+from task_tracker.models import Task
+from django.core.validators import ValidationError
 
 
-class TaskForm(forms.Form):
-    summary = forms.CharField(max_length=40, required=True, label='заголовок')
-    description = forms.CharField(
-        max_length=500, required=False,
-        label='описание', widget=forms.Textarea(attrs={"cols": 24, "rows": 3}))
-    status = forms.ModelChoiceField(queryset=Status.objects.all(), label='статус')
-    types = forms.ModelMultipleChoiceField(queryset=Type.objects.all(), label='types', widget=forms.CheckboxSelectMultiple)
+class TaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['summary', 'description', 'status', 'types']
+        widgets = {'description': widgets.Textarea(attrs={"cols": 24, "rows": 3, 'class': 'form-control'}),
+                   'types': widgets.CheckboxSelectMultiple,
+                   'summary': widgets.TextInput(attrs={'class': 'form-control'})}
+        error_messages = {
+            'summary': {'required': "Нельзя оставлять заголовок пустым!"},
+            'description': {
+                'required': "Пустым тоже нельзя оставлять описание!",
+                'min_length': "Нельзя писать слишком короткое описание! Должно быть больше 20 символов"
+            }
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get('summary') == cleaned_data.get('description'):
+            raise ValidationError('Заголовок и описание не должны быть идентичными!')
+        return cleaned_data
