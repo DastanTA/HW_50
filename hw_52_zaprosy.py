@@ -1,6 +1,6 @@
-from task_tracker.models import Task, Type, Status
+from task_tracker.models import Task, Type
 from datetime import datetime, timedelta
-from django.db.models import Q
+from django.db.models import Q, F
 
 
 # задача №1 - Закрытые задачи за последний месяц от текущей даты:
@@ -38,3 +38,23 @@ q_1 = Q(summary__icontains="bug")
 q_2 = Q(types__type_name="Баг")
 tasks3 = Task.objects.exclude(status__status_name="выполнен").filter(q_1 | q_2)
 print(tasks3)
+
+
+
+#####_______Бонусы____#####
+
+
+#_____бонусное задание №1 _____#
+tasks = Task.objects.all().values('pk', 'summary', 'types__type_name', 'status__status_name')
+print(tasks)
+
+#_____бонусное задание №2 _____#
+tasks = Task.objects.filter(summary__exact=F("description"))
+print(tasks)
+
+#_____бонусное задание №3 _____#
+count1 = Task.objects.filter(types__type_name='задача').count()
+count2 = Task.objects.filter(types__type_name='ошибка').count()
+count3 = Task.objects.filter(types__type_name='улучшение').count()
+count4 = Task.objects.filter(types__type_name='Баг').count()
+print(f'Баг: {count1}\nошибка: {count2}\nулучшение: {count3}\nБаг: {count4}')
