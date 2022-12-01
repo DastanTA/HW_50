@@ -9,8 +9,18 @@ main page
     <li class="nav-item"><a class="nav-link" href="{% url 'add_task' %}">Добавить</a></li>
 {% endblock %}
 
+{% block search %}
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="найти" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Искать</button>
+    </form>
+{% endblock %}
+
 {% block content %}
     <div><br><br><br><h2>Все задачи</h2><br></div>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
 
 <div class="row row-cols-1">
     {% for task in tasks %}
@@ -27,5 +37,10 @@ main page
         </div>
       </div>
     {% endfor %}
-</div>
+</div><br>
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
 {% endblock %}

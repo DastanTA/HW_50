@@ -7,6 +7,8 @@ from task_tracker.forms import TaskForm
 class MainPage(ListView):
     template_name = 'index.html'
     context_object_name = 'tasks'
+    paginate_by = 10
+    paginate_orphans = 1
 
     def get_queryset(self):
         return Task.objects.all().order_by('-created_at')
