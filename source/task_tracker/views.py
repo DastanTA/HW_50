@@ -1,17 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from task_tracker.models import Task
-from django.views.generic import View, TemplateView, FormView
+from django.views.generic import View, TemplateView, FormView, ListView
 from task_tracker.forms import TaskForm
 
 
-class MainPage(TemplateView):
+class MainPage(ListView):
     template_name = 'index.html'
+    context_object_name = 'tasks'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tasks'] = Task.objects.all()
-        print(context)
-        return context
+    def get_queryset(self):
+        return Task.objects.all().order_by('-created_at')
 
 
 class TaskView(TemplateView):
