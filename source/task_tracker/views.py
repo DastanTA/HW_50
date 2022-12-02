@@ -21,6 +21,13 @@ class SearchView(ListView):
             context['search'] = self.search_value
         return context
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.get_query()
+        if self.search_value:
+            queryset = queryset.filter(query)
+        return queryset
+
     def get_search_form(self):
         return SimpleSearchForm(self.request.GET)
 
@@ -30,7 +37,7 @@ class SearchView(ListView):
         return None
 
     def get_query(self):
-        query = Q(summary__icontains=self.search_value)
+        query = Q(None)
         return query
 
 
@@ -43,16 +50,8 @@ class MainPage(SearchView):
     paginate_orphans = 1
 
     def get_query(self):
-        query = super().get_query()
         query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
         return query
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        query = self.get_query()
-        if self.search_value:
-            queryset = queryset.filter(query)
-        return queryset
 
 
 class TaskView(TemplateView):
