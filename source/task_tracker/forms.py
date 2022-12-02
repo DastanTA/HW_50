@@ -17,3 +17,11 @@ class TaskForm(forms.ModelForm):
                 'min_length': "Нельзя писать слишком короткое описание! Должно быть больше 20 символов"
             }
         }
+
+
+class SimpleSearchForm(forms.Form):
+    search = forms.CharField(max_length=100, required=False, label="Найти",
+                             widget=widgets.TextInput(attrs={
+                                 'class': 'form-control me-2',
+                                 'type': 'search',
+                                 'placeholder': 'найти', 'aria-label': 'search'}))
