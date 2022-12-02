@@ -6,13 +6,7 @@ from task_tracker.models import Task
 from task_tracker.forms import TaskForm, SimpleSearchForm
 
 
-class MainPage(ListView):
-    model = Task
-    ordering = ['-created_at']
-    template_name = 'index.html'
-    context_object_name = 'tasks'
-    paginate_by = 10
-    paginate_orphans = 1
+class SearchView(ListView):
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()
@@ -27,13 +21,6 @@ class MainPage(ListView):
             context['search'] = self.search_value
         return context
 
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        if self.search_value:
-            query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
-            queryset = queryset.filter(query)
-        return queryset
-
     def get_search_form(self):
         return SimpleSearchForm(self.request.GET)
 
@@ -41,6 +28,32 @@ class MainPage(ListView):
         if self.form.is_valid():
             return self.form.cleaned_data['search']
         return None
+
+    def get_query(self):
+        query = Q(summary__icontains=self.search_value)
+        return query
+
+
+class MainPage(SearchView):
+    model = Task
+    ordering = ['-created_at']
+    template_name = 'index.html'
+    context_object_name = 'tasks'
+    paginate_by = 10
+    paginate_orphans = 1
+
+    def get_query(self):
+        query = super().get_query()
+        query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value)
+        return query
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.get_query()
+        if self.search_value:
+            queryset = queryset.filter(query)
+        return queryset
+
 
 class TaskView(TemplateView):
     template_name = 'task.html'
