@@ -44,7 +44,7 @@ class SearchView(ListView):
 class MainPage(SearchView):
     model = Task
     ordering = ['-created_at']
-    template_name = 'index.html'
+    template_name = 'tasks/index.html'
     context_object_name = 'tasks'
     paginate_by = 10
     paginate_orphans = 1
@@ -55,7 +55,7 @@ class MainPage(SearchView):
 
 
 class TaskView(TemplateView):
-    template_name = 'task.html'
+    template_name = 'tasks/task.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,7 +64,7 @@ class TaskView(TemplateView):
 
 
 class CreateTask(FormView):
-    template_name = 'create.html'
+    template_name = 'tasks/create.html'
     form_class = TaskForm
 
     def form_valid(self, form):
@@ -76,7 +76,7 @@ class CreateTask(FormView):
 
 
 class UpdateTask(FormView):
-    template_name = 'update.html'
+    template_name = 'tasks/update.html'
     form_class = TaskForm
 
     def get_object(self):
@@ -108,7 +108,7 @@ class UpdateTask(FormView):
 class DeleteTask(View):
     def get(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs['pk'])
-        return render(request, 'delete.html', {'task': task})
+        return render(request, 'tasks/delete.html', {'task': task})
 
     def post(self, request, *args, **kwargs):
         task = get_object_or_404(Task, pk=kwargs['pk'])
