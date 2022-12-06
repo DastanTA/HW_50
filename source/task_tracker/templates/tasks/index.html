@@ -30,7 +30,7 @@ main page
             <h5 class="card-title">{{ task.summary }}</h5>
             <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <p class="card-text">Статус: {{ task.status }}</p><br>
-            <a href="{% url 'view_task' task.id %}" class="btn btn-info">Подробнее</a>
+            <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>
             <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
             <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
           </div>
