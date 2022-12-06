@@ -52,4 +52,4 @@ class Project(models.Model):
         return self.title[:15]
 
     def get_absolute_url(self):
-        return reverse('view_task', kwargs={'pk': self.pk})  ###################    тут надо исправить!!!!!!!!!!!!!
+        return reverse('view_project', kwargs={'pk': self.pk})
