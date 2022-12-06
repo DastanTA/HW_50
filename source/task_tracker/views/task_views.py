@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
-from django.views.generic import View, TemplateView, FormView, ListView, CreateView
+from django.views.generic import View, TemplateView, FormView, CreateView
 from django.db.models import Q
 from task_tracker.models import Task, Project
 from task_tracker.forms import TaskForm, ProjectTaskForm

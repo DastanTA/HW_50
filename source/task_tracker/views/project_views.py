@@ -1,6 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import DetailView, CreateView
-from django.utils.http import urlencode
 from django.db.models import Q
 from task_tracker.models import Project, Task
 from task_tracker.forms import ProjectForm
