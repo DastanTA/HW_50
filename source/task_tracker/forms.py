@@ -6,7 +6,7 @@ from task_tracker.models import Task, Project
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['summary', 'description', 'status', 'types']
+        fields = ['summary', 'description', 'status', 'types', 'project']
         widgets = {'description': widgets.Textarea(attrs={"cols": 24, "rows": 3, 'class': 'form-control'}),
                    'types': widgets.CheckboxSelectMultiple,
                    'summary': widgets.TextInput(attrs={'class': 'form-control'})}

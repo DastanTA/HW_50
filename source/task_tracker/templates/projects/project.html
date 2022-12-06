@@ -6,42 +6,43 @@
 
 {% block menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Все задачи</a></li>
-{#    <li class="nav-item"><a class="nav-link" href="{% url 'add_project' %}">Добавить</a></li>#}
+    <li class="nav-item"><a class="nav-link" href="{% url 'add_project' %}">Добавить проект</a></li>
 {#    <li class="nav-item"><a class="nav-link" href="{% url 'update_project' project.id %}">Изменить</a></li>#}
 {#    <li class="nav-item"><a class="nav-link" href="{% url 'delete_project' project.id %}">Удалить</a></li>#}
 {% endblock %}
 
 {% block content %}
-<div class="card w-50 mt-5" style="width: 18rem;">
-  <div class="card-body">
-    <h4 class="card-title">{{ project.title }}</h4>
-    <p class="card-text">{{ project.description }}</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
-    <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
-    <div class="card-body">
-        <h5 class="card-title">Задачи:</h5>
-        <div class="row row-cols-1">
-        {% for task in tasks %}
-          <div class="col mt-3">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">{{ task.summary }}</h5> <p>[{{ task.project.title }}]</p>
-                <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <p class="card-text">Статус: {{ task.status }}</p><br>
-                <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>
-                <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
-                <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
-              </div>
-            </div>
-          </div>
-        {% empty %}
-            <p class="card-text">Задач еще нет</p>
-        {% endfor %}
-</div><br>
-    </div>
-  </ul>
+<div class=" card row row-cols-1">
+    <div class="col mt-3">
+      <div class="card-body">
+        <h4 class="card-title">{{ project.title }}</h4>
+        <p class="card-text">{{ project.description }}</p>
+      </div></div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
+        <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
+        <div class="card-body">
+            <h5 class="card-title">Задачи этого проекта:</h5>
+            <div class="row row-cols-1">
+                {% for task in tasks %}
+                  <div class="col mt-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ task.summary }}</h5> <p>[{{ task.project.title }}]</p>
+                        <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                        <p class="card-text">Статус: {{ task.status }}</p><br>
+                        <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
+                        <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
+                      </div>
+                    </div>
+                  </div>
+                {% empty %}
+                    <p class="card-text">Задач еще нет</p>
+                {% endfor %}
+            </div><br>
+        </div>
+      </ul>
   <div class="card-body">
 {#    <a href="{% url 'update_project' project.id %}" class="btn btn-secondary">Изменить</a>#}
 {#    <a href="{% url 'delete_project' project.id %}" class="btn btn-secondary">Удалить</a>#}

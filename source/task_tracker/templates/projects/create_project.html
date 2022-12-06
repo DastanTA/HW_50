@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add task
+Add project
 {% endblock %}
 
 {% block content %}
-    <form action="{% url 'add_task' %}" method="POST" class="mt-5">
+    <form action="{% url 'add_project' %}" method="POST" class="mt-5">
         {% include 'partial/form_template.html' with button_text="создать" %}
     </form>
 {% endblock %}
