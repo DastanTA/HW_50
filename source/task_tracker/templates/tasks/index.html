@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-main page
+All tasks
 {% endblock %}
 
 
@@ -27,7 +27,7 @@ main page
       <div class="col mt-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{{ task.summary }}</h5>
+            <h5 class="card-title">{{ task.summary }}</h5> <p>[{{ task.project.title }}]</p>
             <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <p class="card-text">Статус: {{ task.status }}</p><br>
             <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>

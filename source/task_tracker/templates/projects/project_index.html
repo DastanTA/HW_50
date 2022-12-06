@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+All projects
+{% endblock %}
+
+
+{% block menu %}
+{#    <li class="nav-item"><a class="nav-link" href="{% url 'add_task' %}">Добавить</a></li>#}
+    <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Все задачи</a></li>
+{% endblock %}
+
+
+{% block search %}
+    {% include 'partial/simple_search.html' %}
+{% endblock %}
+
+
+{% block content %}
+    <div><br><br><br><h2>Все проекты</h2><br></div>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
+<div class="row row-cols-1">
+    {% for project in projects %}
+      <div class="col mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text"> Дата окончания: {{ project.finish_date }}</p>
+            <br><p class="card-text">Задачи: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+            <a href="{{ project.get_absolute_url }}" class="btn btn-info">Подробнее</a>
+{#            <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>#}
+{#            <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>#}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div><br>
+
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+
+{% endblock %}

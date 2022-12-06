@@ -41,8 +41,15 @@ class Task(models.Model):
 
 
 class Project(models.Model):
-    title = models.CharField(max_length=40, null=True, blank=True, verbose_name="название", validators=[banned_words, ])
-    description = models.TextField(max_length=300, null=True, blank=True, verbose_name='описание',
-                                   validators=[MinLengthValidator(10), ])
-    start_date = models.DateField(verbose_name="дата начала", null=True, blank=True)
+    title = models.CharField(max_length=40, null=False, blank=False, verbose_name="название",
+                             validators=[banned_words, ], default='default title')
+    description = models.TextField(max_length=300, null=False, blank=False, verbose_name='описание',
+                                   validators=[MinLengthValidator(10), ], default='default description')
+    start_date = models.DateField(verbose_name="дата начала", null=False, blank=False, default='2022-12-06')
     finish_date = models.DateField(verbose_name="дата окончания", null=True, blank=True)
+
+    def __str__(self):
+        return self.title[:15]
+
+    def get_absolute_url(self):
+        return reverse('view_task', kwargs={'pk': self.pk})  ###################    тут надо исправить!!!!!!!!!!!!!

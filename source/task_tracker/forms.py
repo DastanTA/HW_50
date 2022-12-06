@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import widgets
-from task_tracker.models import Task
+from task_tracker.models import Task, Project
 
 
 class TaskForm(forms.ModelForm):
@@ -18,6 +18,19 @@ class TaskForm(forms.ModelForm):
             }
         }
 
+
+class ProjectForm(forms.ModelForm):
+    model = Project
+    fields = ['title', 'description', 'start_date', 'finish_date']
+    widgets = {'description': widgets.Textarea(attrs={"cols": 24, "rows": 3, 'class': 'form-control'}),
+               'title': widgets.TextInput(attrs={'class': 'form-control'})}
+    error_messages = {
+        'title': {'required': "Нельзя оставлять название пустым!"},
+        'description': {
+            'required': "Пустым тоже нельзя оставлять описание!",
+            'min_length': "Нельзя писать слишком короткое описание! Должно быть больше 10 символов"
+        }
+    }
 
 class SimpleSearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label="Найти",
