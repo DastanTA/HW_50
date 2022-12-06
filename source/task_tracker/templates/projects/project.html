@@ -7,6 +7,7 @@
 {% block menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Все задачи</a></li>
     <li class="nav-item"><a class="nav-link" href="{% url 'add_project' %}">Добавить проект</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'add_project_task' project.id %}">Добавить задачу сюда</a></li>
 {#    <li class="nav-item"><a class="nav-link" href="{% url 'update_project' project.id %}">Изменить</a></li>#}
 {#    <li class="nav-item"><a class="nav-link" href="{% url 'delete_project' project.id %}">Удалить</a></li>#}
 {% endblock %}

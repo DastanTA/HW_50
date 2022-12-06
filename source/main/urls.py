@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.urls import path
-from task_tracker.views import MainPage, TaskView, CreateTask, UpdateTask, DeleteTask, ProjectMainPage, ProjectView, ProjectCreate
+from task_tracker.views import \
+    MainPage, TaskView, CreateTask, UpdateTask, DeleteTask, \
+    ProjectMainPage, ProjectView, ProjectCreate, ProjectTaskCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', ProjectMainPage.as_view(), name='project_main'),
     path('add_project/', ProjectCreate.as_view(), name='add_project'),
     path('project/<int:pk>', ProjectView.as_view(), name='view_project'),
+    path('project/<int:pk>/add_task', ProjectTaskCreateView.as_view(), name='add_project_task'),
     path('tasks/', MainPage.as_view(), name='main'),
     path('add_task/', CreateTask.as_view(), name='add_task'),
     path('task/<int:pk>/', TaskView.as_view(), name='view_task'),
