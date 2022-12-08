@@ -33,6 +33,7 @@ All projects
             <br><p class="card-text">Задачи: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <a href="{{ project.get_absolute_url }}" class="btn btn-info">Подробнее</a>
             <a href="{% url 'update_project' project.id %}" class="btn btn-secondary">Изменить</a>
+            <a href="{% url 'delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
           </div>
         </div>
       </div>

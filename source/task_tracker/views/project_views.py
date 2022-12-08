@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import reverse
+from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from task_tracker.models import Project
@@ -51,3 +52,10 @@ class ProjectUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('view_project', kwargs={'pk': self.object.pk})
+
+
+class ProjectDeleteView(DeleteView):
+    model = Project
+    template_name = 'projects/delete_project.html'
+    context_object_name = 'project'
+    success_url = reverse_lazy('project_main')
