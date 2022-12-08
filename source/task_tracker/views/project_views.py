@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
-from django.views.generic import DetailView, CreateView
+from django.shortcuts import reverse
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from task_tracker.models import Project
 from task_tracker.forms import ProjectForm
@@ -40,3 +41,13 @@ class ProjectCreate(CreateView):
     template_name = 'projects/create_project.html'
     model = Project
     form_class = ProjectForm
+
+
+class ProjectUpdateView(UpdateView):
+    model = Project
+    template_name = 'projects/update_project.html'
+    form_class = ProjectForm
+    context_object_name = 'project'
+
+    def get_success_url(self):
+        return reverse('view_project', kwargs={'pk': self.object.pk})
