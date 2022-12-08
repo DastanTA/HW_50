@@ -69,12 +69,12 @@
     "fields": {
         "summary": "Купить игрушку",
         "description": "купить. Buy a toy for my kid",
-        "status": 1,
+        "status": 3,
         "created_at": "2022-11-22T14:15:27.795Z",
-        "updated_at": "2022-12-06T12:09:28.050Z",
+        "updated_at": "2022-12-08T16:50:20.728Z",
         "project": 3,
         "types": [
-            2
+            3
         ]
     }
 },
@@ -490,22 +490,6 @@
 },
 {
     "model": "task_tracker.task",
-    "pk": 30,
-    "fields": {
-        "summary": "test #2 - 05.12.2022",
-        "description": "test #2 - 05.12.2022 / Второй тест",
-        "status": 2,
-        "created_at": "2022-12-05T10:25:34.995Z",
-        "updated_at": "2022-12-05T10:25:34.995Z",
-        "project": 1,
-        "types": [
-            2,
-            3
-        ]
-    }
-},
-{
-    "model": "task_tracker.task",
     "pk": 31,
     "fields": {
         "summary": "Buy milk",
@@ -574,6 +558,19 @@
     }
 },
 {
+    "model": "task_tracker.task",
+    "pk": 39,
+    "fields": {
+        "summary": "Task in D",
+        "description": "This task will be deleted if it's project gets deleted",
+        "status": 2,
+        "created_at": "2022-12-08T17:58:36.679Z",
+        "updated_at": "2022-12-08T17:58:36.679Z",
+        "project": 9,
+        "types": []
+    }
+},
+{
     "model": "task_tracker.project",
     "pk": 1,
     "fields": {
@@ -597,8 +594,8 @@
     "model": "task_tracker.project",
     "pk": 3,
     "fields": {
-        "title": "home",
-        "description": "All tasks related to home and house",
+        "title": "Home",
+        "description": "All tasks related to home and house. [Updated]",
         "start_date": "1999-08-04",
         "finish_date": "2050-08-03"
     }
@@ -625,12 +622,12 @@
 },
 {
     "model": "task_tracker.project",
-    "pk": 6,
+    "pk": 9,
     "fields": {
-        "title": "Test project #3",
-        "description": "default description test project #3",
+        "title": "Project [D]",
+        "description": "Project to be deleted",
         "start_date": "2022-12-06",
-        "finish_date": "2023-04-01"
+        "finish_date": "2022-12-06"
     }
 },
 {

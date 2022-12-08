@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
-from django.views.generic import View, TemplateView, FormView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from task_tracker.models import Task, Project
 from task_tracker.forms import TaskForm, ProjectTaskForm
