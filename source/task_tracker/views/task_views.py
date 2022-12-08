@@ -3,7 +3,7 @@ from django.views.generic import View, TemplateView, FormView, CreateView
 from django.db.models import Q
 from task_tracker.models import Task, Project
 from task_tracker.forms import TaskForm, ProjectTaskForm
-from task_tracker.base_views import SearchView
+from task_tracker.views.base_views import SearchView
 
 
 class MainPage(SearchView):

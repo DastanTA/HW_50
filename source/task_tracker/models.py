@@ -30,7 +30,7 @@ class Task(models.Model):
     types = models.ManyToManyField('task_tracker.Type', related_name='types', blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='время создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='время изменения')
-    project = models.ForeignKey('task_tracker.Project', related_name='projects',
+    project = models.ForeignKey('task_tracker.Project', related_name='tasks',
                                 on_delete=models.CASCADE, verbose_name="проект", null=True, blank=True)
 
     def __str__(self):

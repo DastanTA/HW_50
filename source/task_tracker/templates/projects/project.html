@@ -23,22 +23,7 @@
         <div class="card-body">
             <h5 class="card-title">Задачи этого проекта:</h5>
             <div class="row row-cols-1">
-                {% for task in tasks %}
-                  <div class="col mt-3">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ task.summary }}</h5> <p>[{{ task.project.title }}]</p>
-                        <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                        <p class="card-text">Статус: {{ task.status }}</p><br>
-                        <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>
-                        <a href="{% url 'delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
-                        <a href="{% url 'update_task' task.id %}" class="btn btn-secondary">Изменить</a>
-                      </div>
-                    </div>
-                  </div>
-                {% empty %}
-                    <p class="card-text">Задач еще нет</p>
-                {% endfor %}
+                {% include 'partial/project_tasks.html' %}
             </div><br>
         </div>
       </ul>
