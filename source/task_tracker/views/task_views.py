@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.urls import reverse_lazy
 from django.views.generic import View, TemplateView, FormView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from task_tracker.models import Task, Project
@@ -64,12 +65,8 @@ class UpdateTask(UpdateView):
         return reverse('view_task', kwargs={'pk': self.object.pk})
 
 
-class DeleteTask(View):
-    def get(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs['pk'])
-        return render(request, 'tasks/delete.html', {'task': task})
-
-    def post(self, request, *args, **kwargs):
-        task = get_object_or_404(Task, pk=kwargs['pk'])
-        task.delete()
-        return redirect('main')
+class DeleteTask(DeleteView):
+    model = Task
+    template_name = 'tasks/delete.html'
+    context_object_name = 'task'
+    success_url = reverse_lazy('main')
