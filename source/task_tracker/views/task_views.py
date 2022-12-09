@@ -16,6 +16,10 @@ class MainPage(SearchView):
     paginate_by = 10
     paginate_orphans = 1
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(is_deleted=False)
+
     def get_query(self):
         query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value) | Q(project__title__icontains=self.search_value)
         return query
@@ -71,7 +75,6 @@ class DeleteTask(DeleteView):
     template_name = 'tasks/delete.html'
     context_object_name = 'task'
     success_url = reverse_lazy('main')
-
 
     def form_valid(self, form):
         success_url = self.get_success_url()
