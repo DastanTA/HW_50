@@ -18,7 +18,7 @@ All tasks
 
 
 {% block content %}
-    <div><br><br><br><h2>Все задачи</h2><br></div>
+    <div><br><br><br><h2>Все задачи [{{ tasks.count }}]</h2><br></div>
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}
     {% endif %}

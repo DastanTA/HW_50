@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView
@@ -70,3 +71,8 @@ class DeleteTask(DeleteView):
     template_name = 'tasks/delete.html'
     context_object_name = 'task'
     success_url = reverse_lazy('main')
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        self.object.soft_delete()
+        return HttpResponseRedirect(success_url)

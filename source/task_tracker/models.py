@@ -19,7 +19,25 @@ class Type(models.Model):
         return self.type_name
 
 
-class Task(models.Model):
+class SoftDeleteManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_deleted=False)
+
+
+class SoftDeleteModel(models.Model):
+    is_deleted = models.BooleanField(default=False)
+    all_objects = models.Manager()
+    objects = SoftDeleteManager()
+
+    def soft_delete(self):
+        self.is_deleted = True
+        self.save()
+
+    class Meta:
+        abstract = True
+
+
+class Task(SoftDeleteModel):
     summary = models.CharField(max_length=40, null=False, blank=False,
                                verbose_name='заголовок', validators=[banned_words, ])
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name='описание',
