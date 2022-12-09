@@ -52,6 +52,7 @@
     "model": "task_tracker.task",
     "pk": 1,
     "fields": {
+        "is_deleted": false,
         "summary": "Выполнить домашку",
         "description": "Выполнить домашнее задание №50",
         "status": 3,
@@ -67,6 +68,7 @@
     "model": "task_tracker.task",
     "pk": 2,
     "fields": {
+        "is_deleted": false,
         "summary": "Купить игрушку",
         "description": "купить. Buy a toy for my kid",
         "status": 3,
@@ -82,6 +84,7 @@
     "model": "task_tracker.task",
     "pk": 3,
     "fields": {
+        "is_deleted": false,
         "summary": "поиск",
         "description": "исправить ошибку",
         "status": 3,
@@ -99,6 +102,7 @@
     "model": "task_tracker.task",
     "pk": 4,
     "fields": {
+        "is_deleted": false,
         "summary": "внешний вид",
         "description": "сделать красиво",
         "status": 2,
@@ -114,6 +118,7 @@
     "model": "task_tracker.task",
     "pk": 5,
     "fields": {
+        "is_deleted": false,
         "summary": "leetcode",
         "description": "начать решать задачи",
         "status": 1,
@@ -129,6 +134,7 @@
     "model": "task_tracker.task",
     "pk": 6,
     "fields": {
+        "is_deleted": false,
         "summary": "VS Code",
         "description": "test desc. test desc. test desc",
         "status": 1,
@@ -145,6 +151,7 @@
     "model": "task_tracker.task",
     "pk": 7,
     "fields": {
+        "is_deleted": false,
         "summary": "test master",
         "description": "- test-test - test-test - test-test - test-test - test-test",
         "status": 2,
@@ -161,6 +168,7 @@
     "model": "task_tracker.task",
     "pk": 9,
     "fields": {
+        "is_deleted": false,
         "summary": "Bug fixing",
         "description": "Исправление багов. Задача на следующие 2 недели",
         "status": 2,
@@ -176,6 +184,7 @@
     "model": "task_tracker.task",
     "pk": 10,
     "fields": {
+        "is_deleted": false,
         "summary": "Исправить ошибку",
         "description": "Надо исправить ошибку в конституции. Статья 5, пункт 998",
         "status": 1,
@@ -192,6 +201,7 @@
     "model": "task_tracker.task",
     "pk": 11,
     "fields": {
+        "is_deleted": false,
         "summary": "Ошибка №456",
         "description": "грамматической и логической связи, имеющее определённый моральный характер,",
         "status": 3,
@@ -207,6 +217,7 @@
     "model": "task_tracker.task",
     "pk": 12,
     "fields": {
+        "is_deleted": false,
         "summary": "похожий текст",
         "description": "похожий текст",
         "status": 2,
@@ -225,6 +236,7 @@
     "model": "task_tracker.task",
     "pk": 13,
     "fields": {
+        "is_deleted": false,
         "summary": "same text task",
         "description": "same text task",
         "status": 3,
@@ -241,6 +253,7 @@
     "model": "task_tracker.task",
     "pk": 14,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 1",
         "description": "bled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets con hw_53",
         "status": 1,
@@ -256,6 +269,7 @@
     "model": "task_tracker.task",
     "pk": 15,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 2",
         "description": "osed to using 'Content here, content here', making it look like readabl",
         "status": 2,
@@ -271,6 +285,7 @@
     "model": "task_tracker.task",
     "pk": 16,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 3",
         "description": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
         "status": 3,
@@ -286,6 +301,7 @@
     "model": "task_tracker.task",
     "pk": 17,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 4",
         "description": "humour, or randomised words which don't look even slightly believable.",
         "status": 3,
@@ -301,6 +317,7 @@
     "model": "task_tracker.task",
     "pk": 18,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 5",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
         "status": 2,
@@ -317,6 +334,7 @@
     "model": "task_tracker.task",
     "pk": 19,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 6",
         "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,",
         "status": 3,
@@ -333,6 +351,7 @@
     "model": "task_tracker.task",
     "pk": 20,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 7",
         "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
         "status": 2,
@@ -349,6 +368,7 @@
     "model": "task_tracker.task",
     "pk": 21,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 7",
         "description": "suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to",
         "status": 2,
@@ -365,6 +385,7 @@
     "model": "task_tracker.task",
     "pk": 22,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 7",
         "description": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
         "status": 1,
@@ -381,6 +402,7 @@
     "model": "task_tracker.task",
     "pk": 23,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 8",
         "description": "chunks as necessary, making this the first true generator on the Internet.",
         "status": 3,
@@ -397,6 +419,7 @@
     "model": "task_tracker.task",
     "pk": 24,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 8",
         "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bono",
         "status": 2,
@@ -413,6 +436,7 @@
     "model": "task_tracker.task",
     "pk": 25,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 9",
         "description": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
         "status": 3,
@@ -429,6 +453,7 @@
     "model": "task_tracker.task",
     "pk": 26,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 10",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         "status": 3,
@@ -444,6 +469,7 @@
     "model": "task_tracker.task",
     "pk": 27,
     "fields": {
+        "is_deleted": false,
         "summary": "hw_53 - test 11",
         "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "status": 2,
@@ -460,6 +486,7 @@
     "model": "task_tracker.task",
     "pk": 28,
     "fields": {
+        "is_deleted": false,
         "summary": "test-05.12.2022",
         "description": "test-05.12.2022 / test-05.12.2022 / тест",
         "status": 2,
@@ -476,6 +503,7 @@
     "model": "task_tracker.task",
     "pk": 29,
     "fields": {
+        "is_deleted": false,
         "summary": "test-05.12.2022",
         "description": "test-05.12.2022 / test-05.12.2022 / тест",
         "status": 2,
@@ -492,6 +520,7 @@
     "model": "task_tracker.task",
     "pk": 31,
     "fields": {
+        "is_deleted": false,
         "summary": "Buy milk",
         "description": "Buy some milk to make \"kasha\" in the morning",
         "status": 1,
@@ -507,12 +536,13 @@
     "model": "task_tracker.task",
     "pk": 32,
     "fields": {
+        "is_deleted": false,
         "summary": "test - home",
         "description": "description for test - home",
         "status": 1,
         "created_at": "2022-12-06T12:35:48.776Z",
-        "updated_at": "2022-12-06T12:35:48.776Z",
-        "project": null,
+        "updated_at": "2022-12-09T09:50:31.156Z",
+        "project": 3,
         "types": [
             2
         ]
@@ -522,6 +552,7 @@
     "model": "task_tracker.task",
     "pk": 33,
     "fields": {
+        "is_deleted": false,
         "summary": "test 1",
         "description": "asdasdsad asdasdsad asdasdsa asdasdasd",
         "status": 1,
@@ -535,6 +566,7 @@
     "model": "task_tracker.task",
     "pk": 36,
     "fields": {
+        "is_deleted": false,
         "summary": "test 2",
         "description": "asdasd asdasd asdads asdasd",
         "status": 2,
@@ -548,6 +580,7 @@
     "model": "task_tracker.task",
     "pk": 37,
     "fields": {
+        "is_deleted": false,
         "summary": "внешний диск",
         "description": "купить внешний диск",
         "status": 1,
@@ -561,11 +594,40 @@
     "model": "task_tracker.task",
     "pk": 39,
     "fields": {
+        "is_deleted": false,
         "summary": "Task in D",
         "description": "This task will be deleted if it's project gets deleted",
         "status": 2,
         "created_at": "2022-12-08T17:58:36.679Z",
         "updated_at": "2022-12-08T17:58:36.679Z",
+        "project": 9,
+        "types": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 41,
+    "fields": {
+        "is_deleted": true,
+        "summary": "test delete",
+        "description": "test delete description",
+        "status": 1,
+        "created_at": "2022-12-09T11:34:39.141Z",
+        "updated_at": "2022-12-09T11:36:18.564Z",
+        "project": 9,
+        "types": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 42,
+    "fields": {
+        "is_deleted": true,
+        "summary": "test 2 - delete",
+        "description": "test 2 - delete description",
+        "status": 3,
+        "created_at": "2022-12-09T12:00:59.345Z",
+        "updated_at": "2022-12-09T12:01:28.255Z",
         "project": 9,
         "types": []
     }
@@ -635,7 +697,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$390000$4WMLoHEliZ1DBh0zaE3SHQ$TaV4sMnJViIkZW1yAcn3bNhVAls0InhWZhpuzloSZ2I=",
-        "last_login": "2022-11-22T12:44:33.929Z",
+        "last_login": "2022-12-09T12:05:17.701Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",

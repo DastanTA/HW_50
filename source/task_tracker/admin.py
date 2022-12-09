@@ -3,8 +3,8 @@ from task_tracker.models import Task, Status, Type, Project
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ['id', 'summary', 'status', 'created_at', 'project']
-    list_filter = ['status', 'project']
+    list_display = ['id', 'summary', 'status', 'created_at', 'project', 'is_deleted']
+    list_filter = ['status', 'project', 'is_deleted']
     search_fields = ['summary']
     exclude = []
     filter_horizontal = ['types']
