@@ -21,7 +21,7 @@ class Type(models.Model):
 
 class SoftDeleteManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(is_deleted=False)
+        return super().get_queryset().filter(is_deleted=False, db_index=True)
 
 
 class SoftDeleteModel(models.Model):

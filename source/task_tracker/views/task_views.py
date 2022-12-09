@@ -72,6 +72,7 @@ class DeleteTask(DeleteView):
     context_object_name = 'task'
     success_url = reverse_lazy('main')
 
+
     def form_valid(self, form):
         success_url = self.get_success_url()
         self.object.soft_delete()
