@@ -1,5 +1,6 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import reverse
+from django.shortcuts import reverse, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
@@ -38,13 +39,18 @@ class ProjectView(DetailView):
         return context
 
 
-class ProjectCreate(CreateView):
+class ProjectCreate(LoginRequiredMixin, CreateView):
     template_name = 'projects/create_project.html'
     model = Project
     form_class = ProjectForm
 
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return super().dispatch(request, *args, **kwargs)
+        else:
+            return redirect('accounts:login')
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = 'projects/update_project.html'
     form_class = ProjectForm
@@ -54,7 +60,7 @@ class ProjectUpdateView(UpdateView):
         return reverse('view_project', kwargs={'pk': self.object.pk})
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = 'projects/delete_project.html'
     context_object_name = 'project'

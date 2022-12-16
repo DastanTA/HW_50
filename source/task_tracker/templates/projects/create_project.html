@@ -5,7 +5,7 @@ Add project
 {% endblock %}
 
 {% block content %}
-    <form action="{% url 'add_project' %}" method="POST" class="mt-5">
+    <form action="{% url 'task_tracker:add_project' %}" method="POST" class="mt-5">
         {% include 'partial/form_template.html' with button_text="создать" %}
     </form>
 {% endblock %}

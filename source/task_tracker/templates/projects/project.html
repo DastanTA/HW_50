@@ -5,13 +5,15 @@
 {% endblock %}
 
 {% block menu %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Все задачи</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'add_project' %}">Добавить проект</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'add_project_task' project.id %}">Добавить задачу сюда</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:main' %}">Все задачи</a></li>
+    {% if request.user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project_task' project.id %}">Добавить задачу сюда</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="card row row-cols-1">
+<br><br><div class="card row row-cols-1">
     <div class="col mt-3">
       <div class="card-body">
         <h4 class="card-title">{{ project.title }}</h4>
@@ -21,8 +23,8 @@
         <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
         <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
         <div class="card-body">
-            <a href="{% url 'update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
-            <a href="{% url 'delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+            <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
+            <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
         </div>
         <div class="card-body">
             <h5 class="card-title">Задачи этого проекта:</h5>

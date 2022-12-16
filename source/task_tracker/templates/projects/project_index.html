@@ -7,8 +7,10 @@ All projects
 
 
 {% block menu %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'add_project' %}">Добавить проект</a></li>
-    <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Все задачи</a></li>
+    {% if request.user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
+    {% endif %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:main' %}">Все задачи</a></li>
 {% endblock %}
 
 
@@ -32,8 +34,8 @@ All projects
             <p class="card-text"> Дата окончания: {{ project.finish_date }}</p>
             <br><p class="card-text">Задачи: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <a href="{{ project.get_absolute_url }}" class="btn btn-info">Подробнее</a>
-            <a href="{% url 'update_project' project.id %}" class="btn btn-secondary">Изменить</a>
-            <a href="{% url 'delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+            <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить</a>
+            <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
           </div>
         </div>
       </div>

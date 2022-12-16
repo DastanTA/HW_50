@@ -55,7 +55,8 @@ class Task(SoftDeleteModel):
         return self.summary[:20]
 
     def get_absolute_url(self):
-        return reverse('view_task', kwargs={'pk': self.pk})
+        return reverse('task_tracker:view_task', kwargs={'pk': self.pk})
+
 
 
 class Project(models.Model):
@@ -70,4 +71,4 @@ class Project(models.Model):
         return self.title[:15]
 
     def get_absolute_url(self):
-        return reverse('view_project', kwargs={'pk': self.pk})
+        return reverse('task_tracker:view_project', kwargs={'pk': self.pk})
