@@ -22,10 +22,12 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
         <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
-        <div class="card-body">
-            <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
-            <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div class="card-body">
+                <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
+                <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+            </div>
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">Задачи этого проекта:</h5>
             <div class="row row-cols-1">
