@@ -10,12 +10,11 @@ from task_tracker.views.base_views import SearchView
 
 
 class ProjectMainPage(SearchView):
-    model = Project
-    ordering = ['start_date']
     template_name = 'projects/project_index.html'
     context_object_name = 'projects'
     paginate_by = 4
     paginate_orphans = 1
+    queryset = Project.objects.filter(is_deleted=False).order_by('start_date')
 
     def get_query(self):
         query = Q(title__icontains=self.search_value) | Q(description__icontains=self.search_value)
@@ -24,7 +23,7 @@ class ProjectMainPage(SearchView):
 
 class ProjectView(DetailView):
     template_name = 'projects/project.html'
-    model = Project
+    queryset = Project.objects.filter(is_deleted=False)
     tasks_paginate_by = 3
 
     def get_context_data(self, **kwargs):
@@ -64,4 +63,18 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
     template_name = 'projects/delete_project.html'
     context_object_name = 'project'
-    success_url = reverse_lazy('project_main')
+    success_url = reverse_lazy('task_tracker:project_main')
+
+    def form_valid(self, form):
+        success_url = self.get_success_url()
+        print(success_url)
+        self.object.is_deleted = True
+        self.object.save()
+        return redirect(success_url)
+
+    # def delete(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     success_url = self.get_success_url()
+    #     self.object.is_deleted = True
+    #     self.object.save()
+    #     return redirect(success_url)

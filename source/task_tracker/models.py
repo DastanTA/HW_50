@@ -66,6 +66,7 @@ class Project(models.Model):
                                    validators=[MinLengthValidator(10), ], default='default description')
     start_date = models.DateField(verbose_name="дата начала", null=False, blank=False, default='2022-12-06')
     finish_date = models.DateField(verbose_name="дата окончания", null=True, blank=True)
+    is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title[:15]
