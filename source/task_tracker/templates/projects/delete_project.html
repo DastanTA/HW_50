@@ -9,7 +9,7 @@
 
 {% block content %}
     <br><br><br><h3>Вы точно хотите удалить "{{ project.title }}" из базы?</h3><br><br>
-    <form method="POST" action="{% url "task_tracker:delete_task" project.id %}" class="text-center">
+    <form method="POST" action="{% url "task_tracker:delete_project" project.id %}" class="text-center">
         {% csrf_token %}
         <p><input type="submit" value="Да"></p>
         <p><a class="delete_no_link" href="{% url "task_tracker:project_main" %}">Нет</a></p>

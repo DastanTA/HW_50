@@ -43,17 +43,13 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
 
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return super().dispatch(request, *args, **kwargs)
-        else:
-            return redirect('accounts:login')
 
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     template_name = 'projects/update_project.html'
     form_class = ProjectForm
     context_object_name = 'project'
+    queryset = Project.objects.filter(is_deleted=False)
 
     def get_success_url(self):
         return reverse('view_project', kwargs={'pk': self.object.pk})
@@ -64,17 +60,10 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'projects/delete_project.html'
     context_object_name = 'project'
     success_url = reverse_lazy('task_tracker:project_main')
+    queryset = Project.objects.filter(is_deleted=False)
 
     def form_valid(self, form):
         success_url = self.get_success_url()
-        print(success_url)
         self.object.is_deleted = True
         self.object.save()
         return redirect(success_url)
-
-    # def delete(self, request, *args, **kwargs):
-    #     self.object = self.get_object()
-    #     success_url = self.get_success_url()
-    #     self.object.is_deleted = True
-    #     self.object.save()
-    #     return redirect(success_url)

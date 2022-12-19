@@ -8,9 +8,9 @@
 
 {% block content %}
     <br><br><br><h3>Вы точно хотите удалить "{{ task }}" из базы?</h3><br><br>
-    <form method="POST" action="{% url "delete_task" task.id %}" class="text-center">
+    <form method="POST" action="{% url "task_tracker:delete_task" task.id %}" class="text-center">
         {% csrf_token %}
         <p><input type="submit" value="Да"></p>
-        <p><a class="delete_no_link" href="{% url "main" %}">Нет</a></p>
+        <p><a class="delete_no_link" href="{% url "task_tracker:main" %}">Нет</a></p>
     </form>
 {% endblock %}
