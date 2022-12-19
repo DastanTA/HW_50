@@ -6,5 +6,7 @@
 
 {% block content %}
     <h1>Регистрация</h1>
-    {% include 'partial/form_template.html' with button_text='Зарегистрироваться' %}
+    <form action="" method="POST" class="mt-5">
+        {% include 'partial/form_template.html' with button_text='Зарегистрироваться' %}
+    </form>
 {% endblock %}
