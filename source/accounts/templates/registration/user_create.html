@@ -4,6 +4,14 @@
     Регистрация
 {% endblock %}
 
+{% block login %}
+    {% if next %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ next }}">Войти</a></li>
+    {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Войти</a></li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     <h1>Регистрация</h1>
     <form action="" method="POST" class="mt-5">

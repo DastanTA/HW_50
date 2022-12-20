@@ -25,14 +25,8 @@ class RegisterView(CreateView):
             next_url = reverse('task_tracker:project_main')
         return next_url
 
-
-# def register_view(request, *args, **kwargs):
-#     if request.method == 'POST':
-#         form = UserCreationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('task_tracker:project_main')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'registration/user_create.html', context={'form': form})
+    def get_context_data(self, **kwargs):
+        next_url = self.request.GET.get('next', None)
+        context = super().get_context_data(**kwargs)
+        context['next'] = next_url
+        return context

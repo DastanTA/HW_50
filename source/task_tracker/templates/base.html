@@ -25,8 +25,12 @@
         {% if request.user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выйти</a></li>
         {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Войти</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Регистрация</a></li>
+            {% block login %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Войти</a></li>
+            {% endblock %}
+            {% block registration %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}?next={{ request.get_full_path }}">Регистрация</a></li>
+            {% endblock %}
         {% endif %}
       </ul>
     {% block search %}{% endblock %}
