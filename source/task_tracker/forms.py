@@ -56,3 +56,10 @@ class SimpleSearchForm(forms.Form):
                                  'class': 'form-control me-2',
                                  'type': 'search',
                                  'placeholder': 'найти', 'aria-label': 'search'}))
+
+
+class ProjectUserDeleteForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['users']
+        widgets = {'users': widgets.CheckboxSelectMultiple}

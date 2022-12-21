@@ -1,11 +1,11 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import reverse, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from task_tracker.models import Project
-from task_tracker.forms import ProjectForm
+from task_tracker.forms import ProjectForm, ProjectUserDeleteForm
 from task_tracker.views.base_views import SearchView
 
 
@@ -52,7 +52,7 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     queryset = Project.objects.filter(is_deleted=False)
 
     def get_success_url(self):
-        return reverse('view_project', kwargs={'pk': self.object.pk})
+        return reverse('task_tracker:view_project', kwargs={'pk': self.object.pk})
 
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
@@ -67,3 +67,16 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
         self.object.is_deleted = True
         self.object.save()
         return redirect(success_url)
+
+
+class DeleteUserFromProject(PermissionRequiredMixin, UpdateView):
+    model = Project
+    template_name = 'projects/update_users.html'
+    form_class = ProjectUserDeleteForm
+    context_object_name = 'project'
+    queryset = Project.objects.filter(is_deleted=False)
+    permission_required = 'task_tracker.change_project'
+    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+
+    def get_success_url(self):
+        return reverse('task_tracker:view_project', kwargs={'pk': self.object.pk})
