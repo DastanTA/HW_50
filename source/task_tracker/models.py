@@ -51,8 +51,7 @@ class Task(SoftDeleteModel):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='время изменения')
     project = models.ForeignKey('task_tracker.Project', related_name='tasks',
                                 on_delete=models.CASCADE, verbose_name="проект", null=True, blank=True)
-    user = models.ForeignKey(get_user_model(), on_delete=models.SET_DEFAULT, default=1, related_name='tasks',
-                             verbose_name='пользователь')
+    users = models.ManyToManyField(get_user_model(), default=1, related_name='tasks', verbose_name='пользователь')
 
     def __str__(self):
         return self.summary[:20]
@@ -70,8 +69,7 @@ class Project(models.Model):
     start_date = models.DateField(verbose_name="дата начала", null=False, blank=False, default='2022-12-06')
     finish_date = models.DateField(verbose_name="дата окончания", null=True, blank=True)
     is_deleted = models.BooleanField(default=False)
-    user = models.ForeignKey(get_user_model(), on_delete=models.SET_DEFAULT, default=1, related_name='projects',
-                             verbose_name='пользователь')
+    users = models.ManyToManyField(get_user_model(), default=1, related_name='projects', verbose_name='пользователь')
 
     def __str__(self):
         return self.title[:15]

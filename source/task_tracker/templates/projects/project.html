@@ -22,6 +22,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
         <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
+        <li class="list-group-item">Участники проекта: {% for user in project.users.all %}{{ user.username }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
         {% if request.user.is_authenticated %}
             <div class="card-body">
                 <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
