@@ -41,6 +41,11 @@ class CreateTask(LoginRequiredMixin, CreateView):
     form_class = TaskForm
     model = Task
 
+    def form_valid(self, form):
+        task = form.save()
+        task.users.add(self.request.user)
+        return redirect('task_tracker:view_task', pk=task.pk)
+
 
 class ProjectTaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
@@ -52,6 +57,7 @@ class ProjectTaskCreateView(LoginRequiredMixin, CreateView):
         task = form.save(commit=False)
         task.project = project
         task.save()
+        task.users.add(self.request.user)
         return redirect('task_tracker:view_project', pk=project.pk)
 
     def get_context_data(self, **kwargs):
