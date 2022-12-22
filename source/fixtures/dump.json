@@ -1,0 +1,885 @@
+[
+{
+    "model": "task_tracker.status",
+    "pk": 1,
+    "fields": {
+        "status_name": "новый"
+    }
+},
+{
+    "model": "task_tracker.status",
+    "pk": 2,
+    "fields": {
+        "status_name": "в процессе"
+    }
+},
+{
+    "model": "task_tracker.status",
+    "pk": 3,
+    "fields": {
+        "status_name": "выполнен"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 1,
+    "fields": {
+        "type_name": "задача"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 2,
+    "fields": {
+        "type_name": "ошибка"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 3,
+    "fields": {
+        "type_name": "улучшение"
+    }
+},
+{
+    "model": "task_tracker.type",
+    "pk": 4,
+    "fields": {
+        "type_name": "Баг"
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 1,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Выполнить домашку",
+        "description": "Выполнить домашнее задание №50",
+        "status": 3,
+        "created_at": "2022-11-22T14:14:55.899Z",
+        "updated_at": "2022-12-06T11:46:31.160Z",
+        "project": 2,
+        "types": [
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 2,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Купить игрушку",
+        "description": "купить. Buy a toy for my kid",
+        "status": 3,
+        "created_at": "2022-11-22T14:15:27.795Z",
+        "updated_at": "2022-12-08T16:50:20.728Z",
+        "project": 3,
+        "types": [
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 3,
+    "fields": {
+        "is_deleted": false,
+        "summary": "поиск",
+        "description": "исправить ошибку",
+        "status": 3,
+        "created_at": "2022-11-22T14:16:07.043Z",
+        "updated_at": "2022-12-06T11:46:49.913Z",
+        "project": 2,
+        "types": [
+            1,
+            2,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 4,
+    "fields": {
+        "is_deleted": false,
+        "summary": "внешний вид",
+        "description": "сделать красиво",
+        "status": 2,
+        "created_at": "2022-11-22T14:16:26.323Z",
+        "updated_at": "2022-12-06T11:47:01.090Z",
+        "project": 2,
+        "types": [
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 5,
+    "fields": {
+        "is_deleted": false,
+        "summary": "leetcode",
+        "description": "начать решать задачи",
+        "status": 1,
+        "created_at": "2022-11-22T14:16:46.778Z",
+        "updated_at": "2022-12-06T11:47:20.762Z",
+        "project": 2,
+        "types": [
+            1
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 6,
+    "fields": {
+        "is_deleted": false,
+        "summary": "VS Code",
+        "description": "test desc. test desc. test desc",
+        "status": 1,
+        "created_at": "2022-11-22T14:19:58.891Z",
+        "updated_at": "2022-12-06T11:47:41.413Z",
+        "project": 2,
+        "types": [
+            1,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 7,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test master",
+        "description": "- test-test - test-test - test-test - test-test - test-test",
+        "status": 2,
+        "created_at": "2022-11-24T11:42:47.210Z",
+        "updated_at": "2022-11-24T12:30:06.681Z",
+        "project": 1,
+        "types": [
+            1,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 9,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Bug fixing",
+        "description": "Исправление багов. Задача на следующие 2 недели",
+        "status": 2,
+        "created_at": "2022-11-29T10:40:55.826Z",
+        "updated_at": "2022-12-06T11:47:51.276Z",
+        "project": 2,
+        "types": [
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 10,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Исправить ошибку",
+        "description": "Надо исправить ошибку в конституции. Статья 5, пункт 998",
+        "status": 1,
+        "created_at": "2022-11-29T10:42:01.235Z",
+        "updated_at": "2022-12-06T11:47:59.466Z",
+        "project": 2,
+        "types": [
+            2,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 11,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Ошибка №456",
+        "description": "грамматической и логической связи, имеющее определённый моральный характер,",
+        "status": 3,
+        "created_at": "2022-11-29T10:43:09.267Z",
+        "updated_at": "2022-11-29T10:43:09.267Z",
+        "project": 1,
+        "types": [
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 12,
+    "fields": {
+        "is_deleted": false,
+        "summary": "похожий текст",
+        "description": "похожий текст",
+        "status": 2,
+        "created_at": "2022-11-29T10:45:52.930Z",
+        "updated_at": "2022-11-29T10:45:52.930Z",
+        "project": 1,
+        "types": [
+            1,
+            2,
+            3,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 13,
+    "fields": {
+        "is_deleted": false,
+        "summary": "same text task",
+        "description": "same text task",
+        "status": 3,
+        "created_at": "2022-11-29T10:47:04.790Z",
+        "updated_at": "2022-11-29T10:47:04.790Z",
+        "project": 1,
+        "types": [
+            1,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 14,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 1",
+        "description": "bled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets con hw_53",
+        "status": 1,
+        "created_at": "2022-12-01T14:41:55.531Z",
+        "updated_at": "2022-12-01T14:41:55.531Z",
+        "project": 1,
+        "types": [
+            1
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 15,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 2",
+        "description": "osed to using 'Content here, content here', making it look like readabl",
+        "status": 2,
+        "created_at": "2022-12-01T14:42:20.852Z",
+        "updated_at": "2022-12-01T14:42:20.852Z",
+        "project": 1,
+        "types": [
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 16,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 3",
+        "description": "Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+        "status": 3,
+        "created_at": "2022-12-01T14:43:02.680Z",
+        "updated_at": "2022-12-01T14:43:02.680Z",
+        "project": 1,
+        "types": [
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 17,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 4",
+        "description": "humour, or randomised words which don't look even slightly believable.",
+        "status": 3,
+        "created_at": "2022-12-01T14:43:30.760Z",
+        "updated_at": "2022-12-01T14:43:30.760Z",
+        "project": 1,
+        "types": [
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 18,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 5",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin",
+        "status": 2,
+        "created_at": "2022-12-01T14:44:05.673Z",
+        "updated_at": "2022-12-01T14:44:05.673Z",
+        "project": 1,
+        "types": [
+            2,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 19,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 6",
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,",
+        "status": 3,
+        "created_at": "2022-12-01T14:44:46.490Z",
+        "updated_at": "2022-12-01T14:44:46.490Z",
+        "project": 1,
+        "types": [
+            1,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 20,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 7",
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour",
+        "status": 2,
+        "created_at": "2022-12-01T14:45:28.677Z",
+        "updated_at": "2022-12-01T14:45:28.677Z",
+        "project": 1,
+        "types": [
+            2,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 21,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 7",
+        "description": "suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to",
+        "status": 2,
+        "created_at": "2022-12-01T14:45:59.166Z",
+        "updated_at": "2022-12-01T14:45:59.166Z",
+        "project": 1,
+        "types": [
+            3,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 22,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 7",
+        "description": "All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary",
+        "status": 1,
+        "created_at": "2022-12-01T14:46:27.020Z",
+        "updated_at": "2022-12-01T14:46:27.020Z",
+        "project": 1,
+        "types": [
+            1,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 23,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 8",
+        "description": "chunks as necessary, making this the first true generator on the Internet.",
+        "status": 3,
+        "created_at": "2022-12-01T14:46:52.529Z",
+        "updated_at": "2022-12-01T14:46:52.529Z",
+        "project": 1,
+        "types": [
+            2,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 24,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 8",
+        "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bono",
+        "status": 2,
+        "created_at": "2022-12-01T14:47:27.208Z",
+        "updated_at": "2022-12-01T14:47:27.208Z",
+        "project": 1,
+        "types": [
+            1,
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 25,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 9",
+        "description": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+        "status": 3,
+        "created_at": "2022-12-01T14:47:59.871Z",
+        "updated_at": "2022-12-01T14:47:59.871Z",
+        "project": 1,
+        "types": [
+            2,
+            4
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 26,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 10",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "status": 3,
+        "created_at": "2022-12-01T14:48:25.910Z",
+        "updated_at": "2022-12-01T14:48:25.910Z",
+        "project": 1,
+        "types": [
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 27,
+    "fields": {
+        "is_deleted": false,
+        "summary": "hw_53 - test 11",
+        "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        "status": 2,
+        "created_at": "2022-12-01T14:48:56.849Z",
+        "updated_at": "2022-12-06T11:46:03.433Z",
+        "project": 2,
+        "types": [
+            1,
+            3
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 28,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test-05.12.2022",
+        "description": "test-05.12.2022 / test-05.12.2022 / тест",
+        "status": 2,
+        "created_at": "2022-12-05T10:18:51.512Z",
+        "updated_at": "2022-12-05T10:18:51.512Z",
+        "project": 1,
+        "types": [
+            1,
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 29,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test-05.12.2022",
+        "description": "test-05.12.2022 / test-05.12.2022 / тест",
+        "status": 2,
+        "created_at": "2022-12-05T10:19:32.971Z",
+        "updated_at": "2022-12-05T10:19:32.971Z",
+        "project": 1,
+        "types": [
+            1,
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 31,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Buy milk",
+        "description": "Buy some milk to make \"kasha\" in the morning",
+        "status": 1,
+        "created_at": "2022-12-06T12:06:50.396Z",
+        "updated_at": "2022-12-06T12:09:53.797Z",
+        "project": 3,
+        "types": [
+            1
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 32,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test - home",
+        "description": "description for test - home",
+        "status": 1,
+        "created_at": "2022-12-06T12:35:48.776Z",
+        "updated_at": "2022-12-09T09:50:31.156Z",
+        "project": 3,
+        "types": [
+            2
+        ],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 33,
+    "fields": {
+        "is_deleted": true,
+        "summary": "test 1",
+        "description": "asdasdsad asdasdsad asdasdsa asdasdasd",
+        "status": 1,
+        "created_at": "2022-12-06T12:48:48.895Z",
+        "updated_at": "2022-12-22T13:15:13.493Z",
+        "project": 3,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 36,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test 2",
+        "description": "asdasd asdasd asdads asdasd",
+        "status": 2,
+        "created_at": "2022-12-06T12:52:29.052Z",
+        "updated_at": "2022-12-06T12:52:29.052Z",
+        "project": 3,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 37,
+    "fields": {
+        "is_deleted": false,
+        "summary": "внешний диск",
+        "description": "купить внешний диск",
+        "status": 1,
+        "created_at": "2022-12-08T15:41:47.309Z",
+        "updated_at": "2022-12-08T15:41:47.309Z",
+        "project": 4,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 39,
+    "fields": {
+        "is_deleted": false,
+        "summary": "Task in D",
+        "description": "This task will be deleted if it's project gets deleted",
+        "status": 2,
+        "created_at": "2022-12-08T17:58:36.679Z",
+        "updated_at": "2022-12-08T17:58:36.679Z",
+        "project": 9,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 41,
+    "fields": {
+        "is_deleted": true,
+        "summary": "test delete",
+        "description": "test delete description",
+        "status": 1,
+        "created_at": "2022-12-09T11:34:39.141Z",
+        "updated_at": "2022-12-09T11:36:18.564Z",
+        "project": 9,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 42,
+    "fields": {
+        "is_deleted": true,
+        "summary": "test 2 - delete",
+        "description": "test 2 - delete description",
+        "status": 3,
+        "created_at": "2022-12-09T12:00:59.345Z",
+        "updated_at": "2022-12-09T12:01:28.255Z",
+        "project": 9,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 43,
+    "fields": {
+        "is_deleted": false,
+        "summary": "project 9",
+        "description": "project 9 - task",
+        "status": 2,
+        "created_at": "2022-12-19T13:27:13.511Z",
+        "updated_at": "2022-12-19T13:27:13.511Z",
+        "project": 9,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 45,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test - 19.12.2022",
+        "description": "test - 19.12.2022\r\ntest - 19.12.2022",
+        "status": 1,
+        "created_at": "2022-12-19T13:38:51.845Z",
+        "updated_at": "2022-12-19T13:38:51.845Z",
+        "project": 4,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 46,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test #2 - 21.12.2022",
+        "description": "def form_valid(self, form):\r\n        task = form.save(commit=False)\r\n        task.users = self.request.user\r\n        task.save()\r\n        return redirect('task_tracker:view_task', pk=task.pk)",
+        "status": 1,
+        "created_at": "2022-12-21T14:23:51.867Z",
+        "updated_at": "2022-12-21T14:23:51.867Z",
+        "project": 4,
+        "types": [],
+        "users": []
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 48,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test #1 - 21.12.2022",
+        "description": "task.users.add(self.request.user)",
+        "status": 1,
+        "created_at": "2022-12-21T14:28:48.067Z",
+        "updated_at": "2022-12-21T14:28:48.067Z",
+        "project": 4,
+        "types": [],
+        "users": [
+            20
+        ]
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 50,
+    "fields": {
+        "is_deleted": false,
+        "summary": "test - from dev-1",
+        "description": "test - from dev-1\r\ntest - from dev-1",
+        "status": 2,
+        "created_at": "2022-12-22T13:37:04.888Z",
+        "updated_at": "2022-12-22T13:37:04.888Z",
+        "project": 3,
+        "types": [],
+        "users": [
+            22
+        ]
+    }
+},
+{
+    "model": "task_tracker.task",
+    "pk": 51,
+    "fields": {
+        "is_deleted": false,
+        "summary": "dev - 1 - test -- not in project ...",
+        "description": "create a task when not in project",
+        "status": 2,
+        "created_at": "2022-12-22T13:44:41.129Z",
+        "updated_at": "2022-12-22T13:44:41.129Z",
+        "project": 2,
+        "types": [
+            2,
+            4
+        ],
+        "users": [
+            22
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 1,
+    "fields": {
+        "title": "Default",
+        "description": "Tasks will be allocated to this project by default. All previous tasks too",
+        "start_date": "2022-12-05",
+        "finish_date": "2022-12-06",
+        "is_deleted": false,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 2,
+    "fields": {
+        "title": "Study",
+        "description": "Learn Python. All tasks related to studying.",
+        "start_date": "2022-06-01",
+        "finish_date": "2023-04-01",
+        "is_deleted": false,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 3,
+    "fields": {
+        "title": "Home",
+        "description": "All tasks related to home and house. [Updated]",
+        "start_date": "1999-08-04",
+        "finish_date": "2050-08-03",
+        "is_deleted": false,
+        "users": [
+            1,
+            20,
+            22,
+            25
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 4,
+    "fields": {
+        "title": "Test project #1",
+        "description": "default description for test project #1",
+        "start_date": "2022-12-06",
+        "finish_date": "2023-04-01",
+        "is_deleted": false,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 5,
+    "fields": {
+        "title": "Test project #2",
+        "description": "default description for test project #2",
+        "start_date": "2022-12-06",
+        "finish_date": "2050-08-03",
+        "is_deleted": false,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 9,
+    "fields": {
+        "title": "Project [D]",
+        "description": "Project to be deleted",
+        "start_date": "2022-12-06",
+        "finish_date": "2022-12-06",
+        "is_deleted": true,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 10,
+    "fields": {
+        "title": "Test project #3",
+        "description": "default description - Test project #3",
+        "start_date": "2022-12-21",
+        "finish_date": "2023-12-21",
+        "is_deleted": true,
+        "users": [
+            1
+        ]
+    }
+},
+{
+    "model": "task_tracker.project",
+    "pk": 11,
+    "fields": {
+        "title": "Test project #3",
+        "description": "default description - Test project #3",
+        "start_date": "2022-12-21",
+        "finish_date": "2024-12-21",
+        "is_deleted": false,
+        "users": [
+            20
+        ]
+    }
+}
+]
