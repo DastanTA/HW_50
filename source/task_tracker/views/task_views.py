@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
@@ -9,17 +9,19 @@ from task_tracker.forms import TaskForm, ProjectTaskForm
 from task_tracker.views.base_views import SearchView
 
 
-class MainPage(SearchView):
+class MainPage(PermissionRequiredMixin, SearchView):
     model = Task
     ordering = ['-created_at']
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
     paginate_by = 10
     paginate_orphans = 1
+    permission_required = 'task_tracker.view_task'
+    permission_denied_message = 'У вас недостаточно прав для этого действия!'
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(is_deleted=False).filter(project__is_deleted=False)
+        return queryset.filter(is_deleted=False).filter(project__is_deleted=False).filter(project__users=self.request.user)
 
     def get_query(self):
         query = Q(summary__icontains=self.search_value) | Q(description__icontains=self.search_value) | Q(project__title__icontains=self.search_value)
@@ -32,6 +34,10 @@ class TaskView(PermissionRequiredMixin, DetailView):
     model = Task
     permission_required = 'task_tracker.view_task'
     permission_denied_message = 'У вас недостаточно прав для этого действия!'
+
+    def has_permission(self):
+        project = self.get_object().project
+        return super().has_permission() and self.request.user in project.users.all()
 
     def get_queryset(self):
         queryset = super().get_queryset()

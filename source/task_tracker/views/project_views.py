@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
-from django.shortcuts import reverse, redirect
+from django.shortcuts import reverse, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
@@ -19,6 +19,11 @@ class ProjectMainPage(SearchView):
     def get_query(self):
         query = Q(title__icontains=self.search_value) | Q(description__icontains=self.search_value)
         return query
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return render(request, 'get_in.html')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ProjectView(PermissionRequiredMixin, DetailView):

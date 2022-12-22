@@ -44,12 +44,14 @@
                 {% endif %}
             </div>
         {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">Задачи этого проекта:</h5>
-            <div class="row row-cols-1">
-                {% include 'partial/project_tasks.html' %}
-            </div><br>
-        </div>
+        {% if perms.task_tracker.view_task and request.user in project.users.all %}
+            <div class="card-body">
+                <h5 class="card-title">Задачи этого проекта:</h5>
+                <div class="row row-cols-1">
+                    {% include 'partial/project_tasks.html' %}
+                </div><br>
+            </div>
+        {% endif %}
       </ul>
 </div>
 {% endblock %}
