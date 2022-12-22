@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.shortcuts import reverse, redirect
 from django.urls import reverse_lazy
@@ -26,7 +26,7 @@ class ProjectView(PermissionRequiredMixin, DetailView):
     queryset = Project.objects.filter(is_deleted=False)
     tasks_paginate_by = 3
     permission_required = 'task_tracker.view_project'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+    permission_denied_message = "You don't have rights for this action!"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -45,7 +45,7 @@ class ProjectCreate(PermissionRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
     permission_required = 'task_tracker.add_project'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+    permission_denied_message = "You don't have rights for this action!"
 
     def form_valid(self, form):
         project = form.save()
@@ -60,7 +60,7 @@ class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     context_object_name = 'project'
     queryset = Project.objects.filter(is_deleted=False)
     permission_required = 'task_tracker.change_project'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+    permission_denied_message = "You don't have rights for this action!"
 
     def get_success_url(self):
         return reverse('task_tracker:view_project', kwargs={'pk': self.object.pk})
@@ -73,7 +73,7 @@ class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('task_tracker:project_main')
     queryset = Project.objects.filter(is_deleted=False)
     permission_required = 'task_tracker.delete_project'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+    permission_denied_message = "You don't have rights for this action!"
 
     def form_valid(self, form):
         success_url = self.get_success_url()
@@ -88,8 +88,11 @@ class DeleteUserFromProject(PermissionRequiredMixin, UpdateView):
     form_class = ProjectUserDeleteForm
     context_object_name = 'project'
     queryset = Project.objects.filter(is_deleted=False)
-    permission_required = 'task_tracker.change_project'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
+    permission_required = 'task_tracker.can_change_users'
+    permission_denied_message = "You don't have rights for this action!"
+
+    def has_permission(self):
+        return super().has_permission() and self.request.user in self.get_object().users.all()
 
     def get_success_url(self):
         return reverse('task_tracker:view_project', kwargs={'pk': self.object.pk})

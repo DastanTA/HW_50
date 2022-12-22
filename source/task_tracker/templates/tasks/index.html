@@ -7,8 +7,10 @@ All tasks
 
 
 {% block menu %}
-    {% if request.user.is_authenticated %}
+    {% if perms.task_tracker.add_task %}
         <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_task' %}">Добавить задачу</a></li>
+    {% endif %}
+    {% if perms.task_tracker.add_project %}
         <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
     {% endif %}
 {% endblock %}
@@ -34,8 +36,10 @@ All tasks
             <br><p class="card-text">Типы: {% for type in task.types.all %}{{ type.type_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <p class="card-text">Статус: {{ task.status }}</p><br>
             <a href="{{ task.get_absolute_url }}" class="btn btn-info">Подробнее</a>
-            {% if request.user.is_authenticated %}
+            {% if perms.task_tracker.delete_task and request.user in task.project.users.all %}
                 <a href="{% url 'task_tracker:delete_task' task.id %}" class="btn btn-secondary">Удалить</a>
+            {% endif %}
+            {% if perms.task_tracker.change_task and request.user in task.project.users.all %}
                 <a href="{% url 'task_tracker:update_task' task.id %}" class="btn btn-secondary">Изменить</a>
             {% endif %}
           </div>

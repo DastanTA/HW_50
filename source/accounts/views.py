@@ -18,15 +18,15 @@ class RegisterView(CreateView):
         return redirect(self.get_success_url())
 
     def get_success_url(self):
-        next_url = self.request.GET.get('next')
+        next_url = self.request.GET.get('next', None)
         if not next_url:
             next_url = self.request.POST.get('next')
         if not next_url:
             next_url = reverse('task_tracker:project_main')
         return next_url
 
-    def get_context_data(self, **kwargs):
-        next_url = self.request.GET.get('next', None)
-        context = super().get_context_data(**kwargs)
-        context['next'] = next_url
-        return context
+    # def get_context_data(self, **kwargs):
+    #     next_url = self.request.GET.get('next', None)
+    #     context = super().get_context_data(**kwargs)
+    #     context['next'] = next_url
+    #     return context

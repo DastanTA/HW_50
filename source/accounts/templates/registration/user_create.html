@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block login %}
-    {% if next %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={{ next }}">Войти</a></li>
-    {% else %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Войти</a></li>
-    {% endif %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Войти</a>
+    </li>
+{% endblock %}
+
+{% block registration %}
 {% endblock %}
 
 {% block content %}

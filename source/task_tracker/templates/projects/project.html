@@ -7,8 +7,12 @@
 {% block menu %}
     <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:main' %}">Все задачи</a></li>
     {% if request.user.is_authenticated %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
-        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project_task' project.id %}">Добавить задачу сюда</a></li>
+        {% if perms.task_tracker.add_project and request.user in project.users.all %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
+        {% endif %}
+        {% if perms.task_tracker.add_task and request.user in project.users.all %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project_task' project.id %}">Добавить задачу сюда</a></li>
+        {% endif %}
     {% endif %}
 {% endblock %}
 
@@ -26,14 +30,18 @@
             {% for user in project.users.all %}
                 {{ user.username }}{% if not forloop.last %}, {% endif %}
             {% endfor %}
-            {% if perms.task_tracker.change_project %}
+            {% if perms.task_tracker.can_change_users and request.user in project.users.all %}
                 <a href="{% url 'task_tracker:update_users' project.id %}">редактировать</a>
             {% endif %}
         </li>
         {% if request.user.is_authenticated %}
             <div class="card-body">
-                <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
-                <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+                {% if perms.task_tracker.change_project and request.user in project.users.all %}
+                    <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить проект</a>
+                {% endif %}
+                {% if perms.task_tracker.delete_project and request.user in project.users.all %}
+                    <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+                {% endif %}
             </div>
         {% endif %}
         <div class="card-body">

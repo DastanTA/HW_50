@@ -3,7 +3,9 @@
 {% block title %}Delete{% endblock %}
 
 {% block menu %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_task' %}">Добавить</a></li>
+    {% if perms.task_tracker.delete_task and request.user in task.project.users.all %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_task' %}">Добавить</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
