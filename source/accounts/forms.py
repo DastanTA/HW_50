@@ -9,7 +9,7 @@ class MyUserCreationForm(UserCreationForm):
         cleaned_data = super().clean()
         first_name = cleaned_data.get('first_name')
         last_name = cleaned_data.get('last_name')
-        if not first_name or last_name:
+        if not (first_name or last_name):
             raise forms.ValidationError('Надо заполнить имя или фамилию!')
 
     class Meta(UserCreationForm.Meta):
