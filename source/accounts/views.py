@@ -33,7 +33,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     template_name = 'user_detail.html'
     context_object_name = 'user_obj'
     paginate_related_by = 5
-    paginate_related_orphans = 1
+    paginate_related_orphans = 0
 
     def get_context_data(self, **kwargs):
         projects = self.object.projects.filter(is_deleted=False).order_by('-start_date')

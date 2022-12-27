@@ -4,6 +4,10 @@
     add or remove users
 {% endblock %}
 
+{% block menu %}
+    <li class="nav-item"><a class="nav-link" href="{{ project.get_absolute_url }}">К проекту</a></li>
+{% endblock %}
+
 {% block content %}
     <form action="{% url 'task_tracker:update_users' project.id %}" method="POST" class="mt-5">
         {% include 'partial/form_template.html' with button_text="сохранить" %}

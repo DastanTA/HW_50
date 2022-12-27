@@ -28,10 +28,10 @@
         <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
         <li class="list-group-item">Участники проекта:
             {% for user in project.users.all %}
-                {{ user.username }}{% if not forloop.last %}, {% endif %}
+                <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>{% if not forloop.last %}, {% endif %}
             {% endfor %}
             {% if perms.task_tracker.can_change_users and request.user in project.users.all %}
-                <a href="{% url 'task_tracker:update_users' project.id %}">редактировать</a>
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'task_tracker:update_users' project.id %}">редактировать</a>
             {% endif %}
         </li>
         {% if request.user.is_authenticated %}
