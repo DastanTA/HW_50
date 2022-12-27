@@ -1,0 +1,27 @@
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}
+
+<div class="row row-cols-1">
+    {% for project in projects %}
+      <div class="col mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text"> Дата окончания: {{ project.finish_date }}</p>
+            <a href="{{ project.get_absolute_url }}" class="btn btn-info">Подробнее</a>
+            {% if perms.task_tracker.change_project and request.user in project.users.all %}
+                <a href="{% url 'task_tracker:update_project' project.id %}" class="btn btn-secondary">Изменить</a>
+            {% endif %}
+            {% if perms.task_tracker.delete_project and request.user in project.users.all %}
+                <a href="{% url 'task_tracker:delete_project' project.id %}" class="btn btn-secondary">Удалить проект</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div><br>
+
+{% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+{% endif %}

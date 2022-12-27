@@ -24,21 +24,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% block menu %}{% endblock %}
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link"
-                                            href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выйти</a>
-                    </li>
-                {% else %}
-                    {% block login %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Войти</a>
-                        </li>
-                    {% endblock %}
-                    {% block registration %}
-                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Регистрация</a>
-                        </li>
-                    {% endblock %}
-                {% endif %}
             </ul>
+            {% if request.user.is_authenticated %}
+                <p class="ms-auto text-secondary d-inline-block my-0 py-auto">Привет, <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>!</p>
+                <a class="btn btn-secondary btn-sm ms-2" href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}">Выйти</a>
+            {% else %}
+                {% block login %}
+                    <a class="btn btn-secondary btn-sm ms-2" href="{% url 'accounts:login' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Войти</a>
+                {% endblock %}
+                {% block registration %}
+                    <a class="btn btn-outline-secondary btn-sm ms-2" href="{% url 'accounts:register' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Регистрация</a>
+                {% endblock %}
+            {% endif %}
+
             {% block search %}{% endblock %}
         </div>
     </div>

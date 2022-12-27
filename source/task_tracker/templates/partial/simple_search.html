@@ -2,6 +2,6 @@
     {{ form.search }}
     <input class="btn btn-outline-success" type="submit" value="Поиск">
     {% for error in form.search.errors %}
-        <p class="form-error">{{ error }}</p>
+        <p class="form-error ms-2">{{ error }}</p>
     {% endfor %}
 </form>

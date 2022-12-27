@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block registration %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Регистрация</a>
-    </li>
+    <a class="btn btn-outline-secondary btn-sm ms-2" href="{% url 'accounts:register' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Регистрация</a>
 {% endblock %}
 
 {% block login %}

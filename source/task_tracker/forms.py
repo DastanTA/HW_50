@@ -53,7 +53,7 @@ class ProjectTaskForm(forms.ModelForm):
 class SimpleSearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label="Найти",
                              widget=widgets.TextInput(attrs={
-                                 'class': 'form-control me-2',
+                                 'class': 'form-control me-2 ms-2',
                                  'type': 'search',
                                  'placeholder': 'найти', 'aria-label': 'search'}))
 
