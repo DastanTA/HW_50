@@ -24,6 +24,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 {% block menu %}{% endblock %}
+
+                {% if perms.accounts.can_view_all_users %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:all_users' %}">Все пользователи</a></li>
+                {% endif %}
+
             </ul>
             {% if request.user.is_authenticated %}
                 <p class="ms-auto text-secondary d-inline-block my-0 py-auto">Привет, <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>!</p>

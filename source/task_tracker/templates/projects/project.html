@@ -27,8 +27,12 @@
         <li class="list-group-item">Дата начала: {{ project.start_date }}</li>
         <li class="list-group-item">Дата окончания: {{ project.finish_date }}</li>
         <li class="list-group-item">Участники проекта:
-            {% for user in project.users.all %}
-                <a href="{% url 'accounts:detail' user.pk %}">{{ user.username }}</a>{% if not forloop.last %}, {% endif %}
+            {% for user_obj in project.users.all %}
+                {% if perms.accounts.can_view_all_users or request.user == user_obj %}
+                    <a href="{% url 'accounts:detail' user_obj.pk %}">{{ user_obj.username }}</a>{% if not forloop.last %}, {% endif %}
+                {% else %}
+                    {{ user_obj.username }}{% if not forloop.last %}, {% endif %}
+                {% endif %}
             {% endfor %}
             {% if perms.task_tracker.can_change_users and request.user in project.users.all %}
                 <a class="btn btn-outline-secondary btn-sm" href="{% url 'task_tracker:update_users' project.id %}">редактировать</a>

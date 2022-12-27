@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block login %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Войти</a>
-    </li>
+    <a class="btn btn-secondary btn-sm ms-2" href="{% url 'accounts:login' %}?next={% if request.GET.next %}{{ request.GET.next }}{% else %}{{ request.get_full_path }}{% endif %}">Войти</a>
 {% endblock %}
 
 {% block registration %}
