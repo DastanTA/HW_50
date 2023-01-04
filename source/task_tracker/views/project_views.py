@@ -96,6 +96,11 @@ class DeleteUserFromProject(PermissionRequiredMixin, UpdateView):
     permission_required = 'task_tracker.can_change_users'
     permission_denied_message = "You don't have rights for this action!"
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def has_permission(self):
         return super().has_permission() and self.request.user in self.get_object().users.all()
 

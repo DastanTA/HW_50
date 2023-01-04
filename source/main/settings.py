@@ -130,4 +130,5 @@ LOGIN_REDIRECT_URL = 'task_tracker:project_main'
 LOGOUT_REDIRECT_URL = 'task_tracker:project_main'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+# MEDIA_ROOT = Path.joinpath(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
