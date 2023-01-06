@@ -7,9 +7,6 @@ All tasks
 
 
 {% block menu %}
-    {% if perms.task_tracker.add_task %}
-        <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_task' %}">Добавить задачу</a></li>
-    {% endif %}
     {% if perms.task_tracker.add_project %}
         <li class="nav-item"><a class="nav-link" href="{% url 'task_tracker:add_project' %}">Добавить проект</a></li>
     {% endif %}

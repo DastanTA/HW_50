@@ -44,19 +44,6 @@ class TaskView(PermissionRequiredMixin, DetailView):
         return queryset.filter(is_deleted=False).filter(project__is_deleted=False)
 
 
-class CreateTask(PermissionRequiredMixin, CreateView):
-    template_name = 'tasks/create.html'
-    form_class = TaskForm
-    model = Task
-    permission_required = 'task_tracker.add_task'
-    permission_denied_message = 'У вас недостаточно прав для этого действия!'
-
-    def form_valid(self, form):
-        task = form.save()
-        task.users.add(self.request.user)
-        return redirect('task_tracker:view_task', pk=task.pk)
-
-
 class ProjectTaskCreateView(PermissionRequiredMixin, CreateView):
     model = Task
     template_name = 'tasks/project_task.html'
