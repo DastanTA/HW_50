@@ -4,7 +4,7 @@
 {% block title %}Пользователь{% endblock %}
 
 {% block menu %}
-    <li class="nav-item"><a class="nav-link" href="#">Редактировать</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url "accounts:change" user_obj.pk %}">Редактировать</a></li>
     <li class="nav-item"><a class="nav-link" href="#">Смена пароля</a></li>
 {% endblock %}
 
