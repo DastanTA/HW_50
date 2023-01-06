@@ -6,7 +6,7 @@
 
 {% block menu %}
     <li class="nav-item"><a class="nav-link" href="{% url "accounts:detail" user_obj.pk %}">К профилю</a></li>
-    <li class="nav-item"><a class="nav-link" href="#">Смена пароля</a></li>
+    <li class="nav-item"><a class="nav-link" href="{% url "accounts:password_change" user_obj.pk %}">Смена пароля</a></li>
 {% endblock %}
 
 {% block content %}
