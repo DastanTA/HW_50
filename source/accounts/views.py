@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from accounts.forms import MyUserCreationForm
 from accounts.models import Profile
